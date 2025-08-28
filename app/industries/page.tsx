@@ -358,10 +358,10 @@ export default function Industries() {
 
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-16">
             {[
-              { number: '500+', label: 'IT Projects Delivered', icon: 'ri-folder-check-line', color: 'teal' },
-              { number: '50+', label: 'Organizations Served', icon: 'ri-building-line', color: 'cyan' },
-              { number: '10M+', label: 'End Users Supported', icon: 'ri-user-heart-line', color: 'teal' },
-              { number: '99.9%', label: 'System Uptime', icon: 'ri-shield-check-line', color: 'green' }
+              { number: '100+', label: 'IT Projects Delivered', icon: 'ri-folder-check-line', color: 'teal' },
+              { number: '25+', label: 'Organizations Served', icon: 'ri-building-line', color: 'cyan' },
+              { number: '5M+', label: 'End Users Supported', icon: 'ri-user-heart-line', color: 'teal' },
+              { number: '94.5%', label: 'System Uptime', icon: 'ri-shield-check-line', color: 'green' }
             ].map((stat, index) => (
               <div key={stat.label} className="bg-white rounded-xl p-6 shadow-lg text-center space-y-4 hover:scale-105 transition-transform duration-300">
                 <div className={`w-16 h-16 flex items-center justify-center bg-${stat.color}-100 rounded-full mx-auto`}>
@@ -382,8 +382,8 @@ export default function Industries() {
                   <i className="ri-speed-line text-3xl text-white"></i>
                 </div>
                 <div>
-                  <div className="text-3xl font-bold text-gray-900">45%</div>
-                  <div className="text-gray-600">Average Efficiency Gain</div>
+                  <div className="text-3xl font-bold text-gray-900">3+</div>
+                  <div className="text-gray-600">Years Experience</div>
                 </div>
               </div>
               <div className="text-center space-y-4">
@@ -391,17 +391,17 @@ export default function Industries() {
                   <i className="ri-heart-pulse-line text-3xl text-white"></i>
                 </div>
                 <div>
-                  <div className="text-3xl font-bold text-gray-900">88%</div>
+                  <div className="text-3xl font-bold text-gray-900">90%</div>
                   <div className="text-gray-600">User Satisfaction Rate</div>
                 </div>
               </div>
               <div className="text-center space-y-4">
                 <div className="w-20 h-20 flex items-center justify-center bg-gradient-to-br from-blue-500 to-teal-500 rounded-full mx-auto">
-                  <i className="ri-money-dollar-circle-line text-3xl text-white"></i>
+                  <i className="ri-shield-check-line text-3xl text-white"></i>
                 </div>
                 <div>
-                  <div className="text-3xl font-bold text-gray-900">35%</div>
-                  <div className="text-gray-600">Cost Reduction Average</div>
+                  <div className="text-3xl font-bold text-gray-900">94.5%</div>
+                  <div className="text-gray-600">System Uptime</div>
                 </div>
               </div>
             </div>
@@ -428,14 +428,6 @@ export default function Industries() {
               >
                 <span>Schedule a Consultation</span>
                 <i className="ri-calendar-line"></i>
-              </Link>
-              
-              <Link
-                href="/insights"
-                className="inline-flex items-center space-x-2 border-2 border-teal-600 text-teal-600 px-8 py-4 rounded-lg text-lg font-semibold hover:bg-teal-600 hover:text-white transition-all duration-300 hover:scale-105 whitespace-nowrap"
-              >
-                <span>View Case Studies</span>
-                <i className="ri-file-text-line"></i>
               </Link>
             </div>
           </div>

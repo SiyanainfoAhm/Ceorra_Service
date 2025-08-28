@@ -1,6 +1,6 @@
 
 import type { Metadata } from "next";
-import { Inter, Roboto_Mono, Pacifico } from "next/font/google";
+import { Geist, Geist_Mono, Pacifico } from "next/font/google";
 import "./globals.css";
 
 const pacifico = Pacifico({
@@ -10,13 +10,13 @@ const pacifico = Pacifico({
   variable: '--font-pacifico',
 })
 
-const inter = Inter({
-  variable: "--font-inter",
+const geistSans = Geist({
+  variable: "--font-geist-sans",
   subsets: ["latin"],
 });
 
-const robotoMono = Roboto_Mono({
-  variable: "--font-roboto-mono",
+const geistMono = Geist_Mono({
+  variable: "--font-geist-mono",
   subsets: ["latin"],
 });
 
@@ -25,15 +25,21 @@ export const metadata: Metadata = {
   description: "Building reliable digital solutions for government agencies with secure, accessible, and scalable technology services.",
 };
 
+export const viewport = {
+  width: 'device-width',
+  initialScale: 1,
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning={true}>
+    <html lang="en">
       <body
-        className={`${inter.variable} ${robotoMono.variable} ${pacifico.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${pacifico.variable} antialiased`}
+        suppressHydrationWarning={true}
       >
         {children}
       </body>

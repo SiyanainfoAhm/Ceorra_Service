@@ -7,66 +7,52 @@ interface AnimatedCounterProps {
   end: number;
   duration?: number;
   suffix?: string;
-  prefix?: string;
+  className?: string;
 }
 
-export default function AnimatedCounter({ 
-  end, 
-  duration = 2000, 
-  suffix = '', 
-  prefix = '' 
-}: AnimatedCounterProps) {
+export default function AnimatedCounter({ end, duration = 2000, suffix = '', className = '' }: AnimatedCounterProps) {
   const [count, setCount] = useState(0);
-  const [isVisible, setIsVisible] = useState(false);
-  const counterRef = useRef<HTMLDivElement>(null);
+  const [hasStarted, setHasStarted] = useState(false);
+  const elementRef = useRef<HTMLSpanElement>(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting && !isVisible) {
-          setIsVisible(true);
-        }
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && !hasStarted) {
+            setHasStarted(true);
+            
+            const startTime = Date.now();
+            const animate = () => {
+              const now = Date.now();
+              const progress = Math.min((now - startTime) / duration, 1);
+              const easeOutQuart = 1 - Math.pow(1 - progress, 4);
+              const currentCount = Math.floor(end * easeOutQuart);
+              
+              setCount(currentCount);
+              
+              if (progress < 1) {
+                requestAnimationFrame(animate);
+              }
+            };
+            
+            requestAnimationFrame(animate);
+          }
+        });
       },
       { threshold: 0.1 }
     );
 
-    if (counterRef.current) {
-      observer.observe(counterRef.current);
+    if (elementRef.current) {
+      observer.observe(elementRef.current);
     }
 
     return () => observer.disconnect();
-  }, [isVisible]);
-
-  useEffect(() => {
-    if (!isVisible) return;
-
-    let startTime: number;
-    const startCount = 0;
-
-    const animate = (currentTime: number) => {
-      if (!startTime) startTime = currentTime;
-      const progress = Math.min((currentTime - startTime) / duration, 1);
-      
-      // Easing function for smoother animation
-      const easeOutQuart = 1 - Math.pow(1 - progress, 4);
-      const currentCount = Math.floor(easeOutQuart * (end - startCount) + startCount);
-      
-      setCount(currentCount);
-
-      if (progress < 1) {
-        requestAnimationFrame(animate);
-      }
-    };
-
-    requestAnimationFrame(animate);
-  }, [isVisible, end, duration]);
+  }, [end, duration, hasStarted]);
 
   return (
-    <div 
-      ref={counterRef}
-      className="text-4xl lg:text-5xl font-bold text-teal-600 counter-animation transition-all duration-300 hover:scale-110"
-    >
-      {prefix}{count.toLocaleString()}{suffix}
-    </div>
+    <span ref={elementRef} className={className} suppressHydrationWarning={true}>
+      {count}{suffix}
+    </span>
   );
 }

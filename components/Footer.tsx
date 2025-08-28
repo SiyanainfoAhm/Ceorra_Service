@@ -11,16 +11,13 @@ export default function Footer() {
     return (
       <footer className="bg-gray-900 text-white" role="contentinfo">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             <div className="space-y-4">
-              <div className="flex items-center space-x-3 group">
-                <div className="w-10 h-10 bg-teal-500 rounded-lg flex items-center justify-center text-white font-bold text-lg font-['Pacifico']">
-                  C
-                </div>
-                <span className="text-xl font-bold">Ceorra Services</span>
+              <div className="flex items-center space-x-3 group cursor-pointer">
+                <h3 className="text-xl font-bold text-white">Ceorra Services</h3>
               </div>
-              <p className="text-gray-400 text-sm leading-relaxed">
-                Building reliable digital solutions for the public sector with secure, accessible, and scalable technology.
+              <p className="text-gray-300 text-sm leading-relaxed">
+                Empowering public organizations with reliable, future-ready IT systems that improve citizen lives through innovative technology solutions.
               </p>
             </div>
           </div>
@@ -32,28 +29,14 @@ export default function Footer() {
   return (
     <footer className="bg-gray-900 text-white" role="contentinfo">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="space-y-4">
-            <div className="flex items-center space-x-3 group">
-              <div className="w-10 h-10 bg-teal-500 rounded-lg flex items-center justify-center text-white font-bold text-lg transition-all duration-300 group-hover:bg-teal-400 group-hover:scale-110 font-['Pacifico']">
-                C
-              </div>
-              <span className="text-xl font-bold group-hover:text-teal-400 transition-colors duration-300">Ceorra Services</span>
+            <div className="flex items-center space-x-3 group cursor-pointer">
+              <h3 className="text-xl font-bold text-white">Ceorra Services</h3>
             </div>
-            <p className="text-gray-400 text-sm leading-relaxed">
-              {t('footerTagline')}
+            <p className="text-gray-300 text-sm leading-relaxed">
+              Empowering public organizations with reliable, future-ready IT systems that improve citizen lives through innovative technology solutions.
             </p>
-            <div className="flex space-x-4">
-              <Link href="#" className="w-8 h-8 flex items-center justify-center bg-gray-800 hover:bg-teal-600 rounded-full transition-all duration-300 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2 focus:ring-offset-gray-900" aria-label="LinkedIn">
-                <i className="ri-linkedin-fill"></i>
-              </Link>
-              <Link href="#" className="w-8 h-8 flex items-center justify-center bg-gray-800 hover:bg-teal-600 rounded-full transition-all duration-300 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2 focus:ring-offset-gray-900" aria-label="Twitter">
-                <i className="ri-twitter-fill"></i>
-              </Link>
-              <Link href="#" className="w-8 h-8 flex items-center justify-center bg-gray-800 hover:bg-teal-600 rounded-full transition-all duration-300 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2 focus:ring-offset-gray-900" aria-label="GitHub">
-                <i className="ri-github-fill"></i>
-              </Link>
-            </div>
           </div>
 
           <div className="space-y-4">
@@ -81,15 +64,15 @@ export default function Footer() {
             <div className="space-y-3 text-sm">
               <div className="flex items-start space-x-3">
                 <i className="ri-map-pin-line text-teal-500 mt-1" aria-hidden="true"></i>
-                <address className="text-gray-400 not-italic">123 Government Plaza<br />Washington, DC 20001</address>
+                <address className="text-gray-400 not-italic">Shivalik Shilp, 1302, 13th floor<br />ISCON Circle, Sarkhej - Gandhinagar Hwy<br />Ahmedabad, Gujarat 380015</address>
               </div>
               <div className="flex items-center space-x-3">
                 <i className="ri-phone-line text-teal-500" aria-hidden="true"></i>
-                <a href="tel:+15551234567" className="text-gray-400 hover:text-teal-400 transition-colors duration-300">+1 (555) 123-4567</a>
+                <a href="tel:+919313478015" className="text-gray-400 hover:text-teal-400 transition-colors duration-300">+91 93134 78015</a>
               </div>
               <div className="flex items-center space-x-3">
                 <i className="ri-mail-line text-teal-500" aria-hidden="true"></i>
-                <a href="mailto:hello@ceorraservices.com" className="text-gray-400 hover:text-teal-400 transition-colors duration-300">hello@ceorraservices.com</a>
+                <a href="mailto:hr@ceorra.in" className="text-gray-400 hover:text-teal-400 transition-colors duration-300">hr@ceorra.in</a>
               </div>
             </div>
           </div>

@@ -19,11 +19,12 @@ export default function Header() {
       <header className="bg-white/95 backdrop-blur-sm border-b border-gray-200 sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
-            <Link href="/" className="flex items-center space-x-3 group" aria-label="Ceorra Services Home">
-              <div className="w-10 h-10 bg-teal-600 rounded-lg flex items-center justify-center text-white font-bold text-lg font-['Pacifico']">
-                C
-              </div>
-              <span className="text-xl font-bold text-gray-900">Ceorra Services</span>
+            <Link href="/" className="flex items-center group" aria-label="Ceorra Services Home">
+              <img 
+                src="https://static.readdy.ai/image/7fe129f8d7ac12cdc97a659d50dae110/aa511150326b2feb617cbeb6aef0a7d3.png" 
+                alt="Ceorra Services Logo" 
+                className="h-10 w-auto transition-all duration-300 group-hover:scale-105"
+              />
             </Link>
             <div className="hidden lg:flex items-center space-x-6">
               <span className="text-gray-700">Loading...</span>
@@ -38,11 +39,12 @@ export default function Header() {
     <header className={`bg-white/95 backdrop-blur-sm border-b border-gray-200 sticky top-0 z-50 transition-all duration-700 ${isVisible ? 'animate-slide-down' : 'opacity-0'}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
-          <Link href="/" className="flex items-center space-x-3 group" aria-label="Ceorra Services Home">
-            <div className="w-10 h-10 bg-teal-600 rounded-lg flex items-center justify-center text-white font-bold text-lg transition-all duration-300 group-hover:bg-teal-700 group-hover:scale-110 font-['Pacifico']">
-              C
-            </div>
-            <span className="text-xl font-bold text-gray-900 group-hover:text-teal-600 transition-colors duration-300">Ceorra Services</span>
+          <Link href="/" className="flex items-center group" aria-label="Ceorra Services Home">
+            <img 
+              src="https://static.readdy.ai/image/7fe129f8d7ac12cdc97a659d50dae110/aa511150326b2feb617cbeb6aef0a7d3.png" 
+              alt="Ceorra Services Logo" 
+              className="h-10 w-auto transition-all duration-300 group-hover:scale-105"
+            />
           </Link>
 
           <nav className="hidden lg:flex items-center space-x-6" aria-label="Main navigation">
@@ -62,16 +64,8 @@ export default function Header() {
               {t('industries')}
               <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-teal-600 transition-all duration-300 group-hover:w-full"></span>
             </Link>
-            <Link href="/insights" className="text-gray-700 hover:text-teal-600 transition-all duration-300 font-medium relative group focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2 rounded px-2 py-1">
-              {t('insights')}
-              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-teal-600 transition-all duration-300 group-hover:w-full"></span>
-            </Link>
             <Link href="/about" className="text-gray-700 hover:text-teal-600 transition-all duration-300 font-medium relative group focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2 rounded px-2 py-1">
               {t('about')}
-              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-teal-600 transition-all duration-300 group-hover:w-full"></span>
-            </Link>
-            <Link href="/careers" className="text-gray-700 hover:text-teal-600 transition-all duration-300 font-medium relative group focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2 rounded px-2 py-1">
-              {t('careers')}
               <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-teal-600 transition-all duration-300 group-hover:w-full"></span>
             </Link>
             <Link href="/contact" className="text-gray-700 hover:text-teal-600 transition-all duration-300 font-medium relative group focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2 rounded px-2 py-1">
@@ -108,14 +102,8 @@ export default function Header() {
               <Link href="/industries" className="text-gray-700 hover:text-teal-600 transition-colors duration-300 font-medium focus:outline-none focus:text-teal-600">
                 {t('industries')}
               </Link>
-              <Link href="/insights" className="text-gray-700 hover:text-teal-600 transition-colors duration-300 font-medium focus:outline-none focus:text-teal-600">
-                {t('insights')}
-              </Link>
               <Link href="/about" className="text-gray-700 hover:text-teal-600 transition-colors duration-300 font-medium focus:outline-none focus:text-teal-600">
                 {t('about')}
-              </Link>
-              <Link href="/careers" className="text-gray-700 hover:text-teal-600 transition-colors duration-300 font-medium focus:outline-none focus:text-teal-600">
-                {t('careers')}
               </Link>
               <Link href="/contact" className="text-gray-700 hover:text-teal-600 transition-colors duration-300 font-medium focus:outline-none focus:text-teal-600">
                 {t('contact')}

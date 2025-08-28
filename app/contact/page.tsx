@@ -15,6 +15,8 @@ export default function Contact() {
     message: ''
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const [submitMessage, setSubmitMessage] = useState('');
 
   useEffect(() => {
     setIsVisible(true);
@@ -30,45 +32,82 @@ export default function Contact() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    
+    // Validate form data
+    if (!formData.name.trim() || !formData.email.trim() || !formData.subject.trim() || !formData.message.trim()) {
+      setSubmitStatus('error');
+      setSubmitMessage('Please fill in all required fields.');
+      return;
+    }
+
     if (formData.message.length > 500) {
-      alert('Message must be 500 characters or less.');
+      setSubmitStatus('error');
+      setSubmitMessage('Message must be 500 characters or less.');
       return;
     }
 
     setIsSubmitting(true);
-    
-    setTimeout(() => {
-      console.log('Contact form submitted:', formData);
-      alert('Thank you for your message! Our team will respond within 24 hours.');
-      
-      setFormData({
-        name: '',
-        email: '',
-        organization: '',
-        subject: '',
-        message: ''
+    setSubmitStatus('idle');
+    setSubmitMessage('');
+
+    try {
+      // Prepare form data using application/x-www-form-urlencoded encoding
+      const formDataToSubmit = new URLSearchParams();
+      formDataToSubmit.append('name', formData.name.trim());
+      formDataToSubmit.append('email', formData.email.trim());
+      formDataToSubmit.append('organization', formData.organization.trim());
+      formDataToSubmit.append('subject', formData.subject.trim());
+      formDataToSubmit.append('message', formData.message.trim());
+
+      const response = await fetch('https://readdy.ai/api/form/d2nu4lt1jcu2le4casog', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: formDataToSubmit.toString(),
       });
+
+      if (response.ok) {
+        setSubmitStatus('success');
+        setSubmitMessage('Thank you for your message! Our team will respond within 24 hours.');
+        
+        // Reset form data
+        setFormData({
+          name: '',
+          email: '',
+          organization: '',
+          subject: '',
+          message: ''
+        });
+      } else {
+        throw new Error('Failed to submit form');
+      }
+    } catch (error) {
+      console.error('Form submission error:', error);
+      setSubmitStatus('error');
+      setSubmitMessage('Sorry, there was an error submitting your message. Please try again.');
+    } finally {
       setIsSubmitting(false);
-    }, 1000);
+    }
   };
 
   const quickContacts = [
     {
       type: 'General Inquiries',
-      email: 'hello@ceorra.in',
-      phone: '+91 (129) 456-7890',
+      email: 'hr@ceorra.in',
+      phone: '+91 93134 78015',
       icon: 'ri-question-line'
     },
     {
       type: 'Technical Support',
-      email: 'support@ceorra.in',
-      phone: '+91 (129) 456-7891',
+      email: 'hr@ceorra.in',
+      phone: '+91 93134 78015',
       icon: 'ri-tools-line'
     },
     {
       type: 'Business Development',
-      email: 'business@ceorra.in',
-      phone: '+91 (129) 456-7892',
+      email: 'hr@ceorra.in',
+      phone: '+91 93134 78015',
       icon: 'ri-briefcase-line'
     }
   ];
@@ -102,7 +141,23 @@ export default function Contact() {
                 <p className="text-gray-600 mb-8">We'll respond within 24 hours to discuss your requirements.</p>
               </div>
               
-              <form id="contact-form" onSubmit={handleSubmit} className="space-y-6">
+              {/* Submission Status Message */}
+              {submitStatus !== 'idle' && (
+                <div className={`mb-6 p-4 rounded-lg ${
+                  submitStatus === 'success' 
+                    ? 'bg-green-50 border border-green-200 text-green-800' 
+                    : 'bg-red-50 border border-red-200 text-red-800'
+                }`}>
+                  <div className="flex items-center space-x-2">
+                    <i className={`${
+                      submitStatus === 'success' ? 'ri-check-circle-line' : 'ri-error-warning-line'
+                    }`}></i>
+                    <span>{submitMessage}</span>
+                  </div>
+                </div>
+              )}
+              
+              <form id="contact-form" data-readdy-form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
                     <input
@@ -216,8 +271,9 @@ export default function Contact() {
                     <h3 className="font-semibold text-gray-900 mb-1">Office Address</h3>
                     <p className="text-gray-600">
                       Ceorra Services Pvt Ltd<br />
-                      Plot No. 1086, Sector 37<br />
-                      Faridabad, Haryana 121003<br />
+                      Shivalik Shilp, 1302, 13th floor<br />
+                      ISCON Circle, Sarkhej - Gandhinagar Hwy<br />
+                      Ahmedabad, Gujarat 380015<br />
                       India
                     </p>
                   </div>
@@ -229,7 +285,7 @@ export default function Contact() {
                   </div>
                   <div>
                     <h3 className="font-semibold text-gray-900 mb-1">Phone</h3>
-                    <p className="text-gray-600">+91 (129) 456-7890</p>
+                    <p className="text-gray-600">+91 93134 78015</p>
                   </div>
                 </div>
                 
@@ -239,7 +295,7 @@ export default function Contact() {
                   </div>
                   <div>
                     <h3 className="font-semibold text-gray-900 mb-1">Email</h3>
-                    <p className="text-gray-600">hello@ceorra.in</p>
+                    <p className="text-gray-600">hr@ceorra.in</p>
                   </div>
                 </div>
               </div>
