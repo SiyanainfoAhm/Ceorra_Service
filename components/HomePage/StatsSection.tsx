@@ -3,11 +3,15 @@
 
 import AnimatedCounter from '../AnimatedCounter';
 
-export default function StatsSection() {
+interface StatsSectionProps {
+  isVisible: boolean;
+}
+
+export default function StatsSection({ isVisible }: StatsSectionProps) {
   return (
     <section className="py-20 bg-gradient-to-br from-gray-50 to-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
+        <div className={`text-center mb-16 transition-all duration-1000 ${isVisible ? 'animate-fade-in-up' : 'opacity-0'}`}>
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
             Our Impact in Numbers
           </h2>
@@ -16,7 +20,7 @@ export default function StatsSection() {
           </p>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 transition-all duration-1000 delay-300 ${isVisible ? 'animate-fade-in-up' : 'opacity-0'}`}>
           <div className="space-y-4 group hover:scale-105 transition-transform duration-300">
             <div className="counter-animation">
               <AnimatedCounter end={100} duration={2000} suffix="+" className="text-4xl lg:text-5xl font-bold text-teal-600 counter-animation transition-all duration-300 hover:scale-110" />
