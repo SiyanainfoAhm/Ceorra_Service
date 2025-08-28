@@ -1,6 +1,6 @@
 
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Pacifico } from "next/font/google";
+import { Inter, JetBrains_Mono, Pacifico } from "next/font/google";
 import "./globals.css";
 
 const pacifico = Pacifico({
@@ -10,13 +10,13 @@ const pacifico = Pacifico({
   variable: '--font-pacifico',
 })
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const inter = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const jetbrainsMono = JetBrains_Mono({
+  variable: "--font-jetbrains-mono",
   subsets: ["latin"],
 });
 
@@ -38,7 +38,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${pacifico.variable} antialiased`}
+        className={`${inter.variable} ${jetbrainsMono.variable} ${pacifico.variable} antialiased`}
         suppressHydrationWarning={true}
       >
         {children}
